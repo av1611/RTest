@@ -1,4 +1,4 @@
-# RTest <img src="images/RTest.png" align="right" />
+# RTest <img src="inst/images/RTest.png" align="right" />
 
 [![Build Status](https://travis-ci.org/zappingseb/RTest.svg?branch=master)](https://travis-ci.org/zappingseb/RTest)
 [![codecov](https://codecov.io/gh/zappingseb/RTest/branch/master/graph/badge.svg)](https://codecov.io/gh/zappingseb/RTest)
