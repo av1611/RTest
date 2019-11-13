@@ -69,7 +69,7 @@ matrix:
       - xvfb-run R CMD check *tar.gz --as-cran
   - r: release
     os: osx
-    osx_image: xcode8
+    osx_image: xcode11
     before_install:
       - brew update
       - brew cask reinstall xquartz
