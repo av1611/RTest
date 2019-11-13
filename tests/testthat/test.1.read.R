@@ -278,7 +278,7 @@ test_that("xmlReadData text",{
      data <- '<text type="factor">abc</text>'
      item <- XML::xmlRoot(XML::xmlParse(data,asText=TRUE))
      expect_equal(
-         xmlReadData_text(item), as.factor(abc)
+         xmlReadData_text(item), as.factor("abc")
      )
 
     })
