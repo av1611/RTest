@@ -172,8 +172,8 @@ xmlReadData_vector <- function(xmlItem) {
       "logical"   = as.integer(vector),
       "integer"   = as.integer(vector),
       "numeric"   = as.numeric(vector),
-      "character" = as.character(vector)),
-      "factor" = as.factor(vector)
+      "character" = as.character(vector),
+      "factor" = as.factor(vector))
   )
 
 
