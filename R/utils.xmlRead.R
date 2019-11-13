@@ -193,6 +193,8 @@ xmlReadData_vector <- function(xmlItem) {
 
     # Set vector names
     names(vector) <- vector.names
+  } else {
+    names(vector) <- NULL
   }
 
   # Return vector ---------------------------------------------------------------------------------
