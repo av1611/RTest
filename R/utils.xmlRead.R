@@ -500,7 +500,7 @@ xmlReadData_text <- function(xmlItem) {
         as.numeric(variable.value)
       },
     "character" = as.character(variable.value),
-    "factor" = as.factor(variable.value)),
+    "factor" = as.factor(variable.value))
 
 
   # Return
