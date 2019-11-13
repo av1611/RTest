@@ -20,6 +20,7 @@ test_that("xmlReadData NULL",
  expect_equal(xmlReadData_data.frame(NULL),NULL)
  expect_equal(xmlReadData_list(NULL),NULL)
  expect_equal(xmlReadData_text(NULL),NULL)
+ expect_equal(xmlReadData_image(NULL),NULL)
  expect_equal(xmlReadData_to_list(NULL),list())
 
 })
