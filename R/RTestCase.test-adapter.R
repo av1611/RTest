@@ -120,8 +120,13 @@ arguments_creator <- function(parameters_xml_definition, input_data=NULL){
             ]][, xmlAttrs(parameters_xml_definition[["RTestData_input_data"]])["column"]]
       }
       # Delete the input data parameters
-      parameters_xml_definition <-
-          XML::removeChildren(parameters_xml_definition, parameters_xml_definition[["RTestData_input_data"]])
+      parameters_xml_definition <- tryCatch(
+          XML::removeChildren(parameters_xml_definition, parameters_xml_definition[["RTestData_input_data"]]),
+          error = function(e){
+            intermediate <- parameters_xml_definition
+            intermediate[["RTestData_input_data"]] <- NULL
+            return(intermediate)
+          })
     }else{
       stop("Cannot read RTestData_input_data if no innput-data node was provided.")
     }
