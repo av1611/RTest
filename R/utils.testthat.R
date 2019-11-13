@@ -41,7 +41,11 @@ quasi_capture <- function(quo, capture, label = NULL) {
 
     quasi_capture <-  "testthat" %:::% "quasi_capture"
 
-    return(quasi_capture(.quo=quo, .capture=capture, .label = deparse(quo)))
+    if (".quo" %in% formalArgs(quasi_capture)) {
+      return(quasi_capture(.quo=quo, .capture=capture, .label = deparse(quo)))
+    } else {
+      return(quasi_capture(quo=quo, capture=capture, label = deparse(quo)))
+    }
   }else{
 
       act <- list()

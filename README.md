@@ -1,4 +1,4 @@
-# RTest <img src="inst/images/RTest.png" align="right" />
+# RTest <img src="https://github.com/zappingseb/RTest/raw/master/inst/images/RTest.png" align="right" />
 
 [![Build Status](https://travis-ci.org/zappingseb/RTest.svg?branch=master)](https://travis-ci.org/zappingseb/RTest)
 [![codecov](https://codecov.io/gh/zappingseb/RTest/branch/master/graph/badge.svg)](https://codecov.io/gh/zappingseb/RTest)
@@ -13,7 +13,7 @@ This provides a framework for R packages developed for a regulatory environment.
 # Features #
 
 **Main features**
-* Human readible tests - `XML` based - [example](https://github.com/zappingseb/RTest/blob/master/xml-templates/RTest_TC-generic.xml)
+* Human readible tests - `XML` based - [example](https://github.com/zappingseb/RTest/blob/master/inst/xml-templates/RTest_TC-generic.xml)
 * Human readible test reports - `html` websites [example](https://zappingseb.github.io/RTest/articles/RTest_TC-generic_result.html)
 * High code coverage - [codecov](https://codecov.io/gh/zappingseb/RTest)
 
@@ -82,10 +82,10 @@ also executes the tests and hands back a pretty nice report.
 
 A basic example of such an XML based test is [`RTest_TC-generic.xml`](https://github.com/zappingseb/RTest/blob/master/xml-templates/RTest_TC-generic.xml). It calls the functions
 
-* example_data_frame 
-* example_image 
+* example_data_frame
+* example_image
 * example_list
-* example_vector 
+* example_vector
 * example_variable
 
 that can be found in [`utils.examples.R`](https://github.com/zappingseb/RTest/blob/master/R/utils.examples.R). Each function
@@ -108,7 +108,7 @@ The R-Code of the function is:
 
 ```r
 example_variable <- function(x=1.2,y=1){
-	(x-y)/(x)
+  (x-y)/(x)
 }
 ```
 
