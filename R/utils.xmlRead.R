@@ -578,13 +578,13 @@ xmlRead.default <- function(xmlItem)
     }
   )
 
-  #if(length(result) == 1){
-  #  return(result[[1]])
-  #}else{
   names(result) <-
     xmlSApply(xmlItem, function(e)
-        if("name" %in% names(xmlAttrs(e))) xmlAttrs(e)[["name"]] else "data"
+        if("name" %in% names(xmlAttrs(e))) xmlAttrs(e)[["name"]] else ""
     )
+  if (all(names(result) == "")) {
+    names(result) <- NULL
+  }
   return(result)
   #}
 }

@@ -329,3 +329,68 @@ test_that("xmlReadData toList",{
           xmlReadData_to_list(item)[["islist"]][["myvar1"]],1)
     })
 
+##################################################################################################
+
+
+# LIST
+
+##################################################################################################
+
+data <- '<headnode>
+<list name="Call">
+<variable value="Reference = ref (pos: pos )" type="character"/>
+<variable value="New test = test (pos: pos )" type="character"/>
+</list >
+<data.frame name="Agreement table">
+  <col-defs>
+    <coldef name="ref = pos" type="character" />
+    <coldef name="ref = neg" type="character" />
+    <coldef name="Total (%)" type="character" />
+  </col-defs>
+  <row name="test = pos">
+    <cell>3</cell>
+    <cell>1</cell>
+    <cell>4, 6</cell>
+  </row>
+</data.frame>
+<testvar name="testvar" value="2" type="numeric" />
+</headnode>
+'
+
+agree_table <- data.frame(
+    "ref = pos" = "3",
+    "ref = neg" = "1",
+    "Total (%)" = "4, 6"
+    , stringsAsFactors = FALSE,
+    check.names = FALSE
+)
+rownames(agree_table) <- "test = pos"
+
+item <- XML::xmlRoot(XML::xmlParse(data,asText=TRUE))
+
+agree_list <- list(
+       Call = list(
+          "Reference = ref (pos: pos )",
+          "New test = test (pos: pos )"
+           ),
+        "Agreement table" = agree_table,
+            testvar = 2
+       )
+lapply(1:length(agree_list),function(i) {
+      if (is.data.frame(agree_list[[i]])) {
+        expect_true(
+            all(
+                xmlReadData_to_list(item)[[i]] ==
+                agree_list[[i]]
+                )
+            )
+      } else {
+      expect_equal(
+          xmlReadData_to_list(item)[[i]],
+          agree_list[[i]]
+          )
+      }
+
+    })
+
+
