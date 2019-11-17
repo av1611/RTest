@@ -177,7 +177,7 @@ expect_testthat <- function(ok, failure_message, info = NULL, srcref = NULL) {
   # Preserve existing API which appear to be used in package test code
   # Can remove in next major release
   if (missing(failure_message)) {
-    warn("`failure_message` is missing, with no default.")
+    rlang::warn("`failure_message` is missing, with no default.")
     message <- "unknown failure"
   } else {
     # A few packages include code in info that errors on evaluation
