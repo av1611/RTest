@@ -171,3 +171,21 @@ test_that("get_existence_of_fun",{
       "package"
   )
 })
+
+##################################################################################################
+
+# -   RTM
+
+##################################################################################################
+
+test_that("RTM util", {
+
+  directory_with_tests <- list.dirs(find.package('RTest'),recursive=TRUE) %>%
+      grep(pattern="xml-templates",value=TRUE)
+
+ expect_equal("data.frame", class(RTest::RTest.getRTM(
+      testcase.directory = directory_with_tests[1],
+      open=FALSE,
+      f.pattern = "RTest_TC-generic.xml"
+  )))
+})
