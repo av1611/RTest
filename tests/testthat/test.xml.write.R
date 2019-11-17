@@ -319,6 +319,62 @@ test_that("xmlWriteData_data.frame",{
     })
 ###################################################################################################
 
+# xmlWriteData_matrix
+
+###################################################################################################
+
+
+test_that("xmlWriteData_matrix",{
+      expect_error(
+          RTest:::xmlWriteData_matrix()
+          )
+
+      expect_error(
+          RTest:::xmlWriteData_matrix(data=NULL)
+      )
+
+      matrix_1 <- matrix(c(1, 2, 3, 4), nrow = 2)
+      colnames(matrix_1) <- c("x", "y")
+
+      expect_output(
+          regexp="numeric",
+          RTest:::xmlWriteData_matrix(data=matrix_1
+          )
+          )
+
+      matrix_2 <- matrix(c("a", "b", 3, 4), nrow = 2)
+      colnames(matrix_2) <- c("x", "y")
+      expect_output(
+          regexp="character",
+          RTest:::xmlWriteData_matrix(data=matrix_2)
+      )
+      expect_equal(
+          "<coldef name=\"y\" type=\"character\" />",
+          trimws(RTest:::xmlWriteData_matrix(data=matrix_2
+              ,printXML=F
+
+          ))[4]
+
+          )
+      expect_equal(
+          "<cell>3</cell>",
+          trimws(RTest:::xmlWriteData_matrix(data=matrix_2,printXML=F
+
+          ))[11]
+
+          )
+      matrix_3 <- matrix(c("a", "b<>", 3, 4), nrow = 2)
+      colnames(matrix_3) <- c("x", "y")
+      expect_equal(
+          "<cell><![CDATA[ b<> ]]></cell>",
+          trimws(RTest:::xmlWriteData_matrix(data=matrix_3 ,printXML=F
+
+              ))[8]
+
+      )
+    })
+###################################################################################################
+
 # xmlWriteData_vector
 
 ###################################################################################################
@@ -456,7 +512,7 @@ test_that("xmlWriteData_params",{
 
       )
       expect_output(
-          RTest:::xmlWriteData_list(data=test_list,name="mylist",printXML=T)
+          RTest:::xmlWriteData_params(data=test_list,name="mylist",printXML=T)
       )
 
       expect_equal(

@@ -575,11 +575,7 @@ xmlWriteData_matrix <- function(elemname = "data", data, name = NULL, printXML =
             paste0("  <coldef name=\"",c,"\" type=\"",
 
           if(typeof(data[, c])=="integer"){
-            if(grepl("Factor",capture.output(str(data[ ,c])))){
-              "factor"
-            }else{
               "numeric"
-            }
           }else if(typeof(data[, c])=="double"){
             "numeric"
           }else{
