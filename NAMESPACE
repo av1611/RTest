@@ -59,7 +59,8 @@ export(
 
   "expect_silent_RTest"              ,
 
-  "RTest.execute"
+  "RTest.execute",
+  "RTest.getRTM"
 )
 
 
