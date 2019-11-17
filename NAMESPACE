@@ -37,8 +37,6 @@ export(
   "test_returnValue_data.frame_cellbycell"    ,
   "test_returnValue_data.frame_shape"         ,
   "test_returnValue_list_nodebynode"          ,
-  "test_manualCheck_file"                     ,
-  "test_manualCheck_confirmWindow"            ,
   "test_returnValue_image"            ,
   "systemInfo.packages"                       ,
   "systemInfo.RInst"                          ,
