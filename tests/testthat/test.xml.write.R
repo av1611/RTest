@@ -433,6 +433,129 @@ test_that("xmlWriteData_list",{
 
     })
 
+
+
+###################################################################################################
+
+# xmlWriteTest_params
+
+###################################################################################################
+
+
+test_that("xmlWriteData_params",{
+
+      test_list <- list(
+
+          a = 123,
+          b = matrix(c(2,2,2,2), nrow = 2, ncol = 2),
+          x = c("1","2"),
+          y = data.frame(x=c("1","2"),y=c(1,2)),
+          z = list(
+              z1 = c("1","2")
+          )
+
+      )
+      expect_output(
+          RTest:::xmlWriteData_list(data=test_list,name="mylist",printXML=T)
+      )
+
+      expect_equal(
+
+          c( "<params name=\"mylist\">"   ,
+              "<a value=\"123\" type=\"numeric\" name=\"a\"/>",
+              "<b name=\"b\">",
+              "<col-defs>",
+              "</col-defs>",
+              "<row>",
+              "<cell>2</cell>",
+              "<cell>2</cell>",
+              "</row>",
+              "<row>",
+              "<cell>2</cell>",
+              "<cell>2</cell>",
+              "</row>",
+              "</b>",
+              "<x name=\"x\" type=\"character\">"               ,
+              "<element>1</element>"                                 ,
+              "<element>2</element>"                                 ,
+              "</x>"                                            ,
+              "<y name=\"y\">"                              ,
+              "<col-defs>"                                           ,
+              "<coldef name=\"x\" type=\"factor\" />"                ,
+              "<coldef name=\"y\" type=\"numeric\" />"               ,
+              "</col-defs>"                                          ,
+              "<row name=\"1\">"                                     ,
+              "<cell>1</cell>"                                       ,
+              "<cell>1</cell>"                                       ,
+              "</row>"                                               ,
+              "<row name=\"2\">"                                     ,
+              "<cell>2</cell>"                                       ,
+              "<cell>2</cell>"                                       ,
+              "</row>"                                               ,
+              "</y>"                                              ,
+              "<z name=\"z\">"                                    ,
+              "<vector name=\"z1\" type=\"character\">"              ,
+              "<element>1</element>"                                 ,
+              "<element>2</element>"                                 ,
+              "</vector>"                                            ,
+              "</z >"                                             ,
+              "</params >" ),
+          trimws(strsplit(
+                  RTest:::xmlWriteData_params(
+                      data=test_list, name="mylist", printXML = F, wrap = TRUE),
+                  "\n")[[1]])
+
+      )
+
+      expect_equal(
+
+          c("",
+            "<a value=\"123\" type=\"numeric\" name=\"a\"/>",
+            "<b name=\"b\">",
+            "<col-defs>",
+            "</col-defs>",
+            "<row>",
+            "<cell>2</cell>",
+            "<cell>2</cell>",
+            "</row>",
+            "<row>",
+            "<cell>2</cell>",
+            "<cell>2</cell>",
+            "</row>",
+            "</b>",
+              "<x name=\"x\" type=\"character\">"               ,
+              "<element>1</element>"                                 ,
+              "<element>2</element>"                                 ,
+              "</x>"                                            ,
+              "<y name=\"y\">"                              ,
+              "<col-defs>"                                           ,
+              "<coldef name=\"x\" type=\"factor\" />"                ,
+              "<coldef name=\"y\" type=\"numeric\" />"               ,
+              "</col-defs>"                                          ,
+              "<row name=\"1\">"                                     ,
+              "<cell>1</cell>"                                       ,
+              "<cell>1</cell>"                                       ,
+              "</row>"                                               ,
+              "<row name=\"2\">"                                     ,
+              "<cell>2</cell>"                                       ,
+              "<cell>2</cell>"                                       ,
+              "</row>"                                               ,
+              "</y>"                                              ,
+              "<z name=\"z\">"                                    ,
+              "<vector name=\"z1\" type=\"character\">"              ,
+              "<element>1</element>"                                 ,
+              "<element>2</element>"                                 ,
+              "</vector>"                                            ,
+              "</z >"),
+          trimws(strsplit(
+                  RTest:::xmlWriteData_params(
+                      data=test_list, name="mylist", printXML = F, wrap = FALSE),
+                  "\n")[[1]])
+
+      )
+
+})
+
 ###################################################################################################
 
 # xmlWriteTest_execution

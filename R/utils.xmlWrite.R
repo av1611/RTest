@@ -796,6 +796,98 @@ xmlWriteData_list <- function(elemname = "list", data, name = NULL, printXML = T
   else
     return(xml)
 }
+# xmlWriteData_params ############################################################################
+
+#' Write params for XML test cases 'xmlReadData_params'
+#'
+#' @param    elemname       (\code{character}) The name of the element's root tag
+#' @param    data           (\code{ANY}) The list to write
+#' @param    name           (\code{character}) The name of the list
+#' @param    printXML       (\code{logical}) Print output or return xml as R object
+#' @param    wrap           (\code{logical}) Wheter to wrap it in elemname tag
+#'
+#' @return   (\code{character})
+#'
+#' @export
+#' @author   Matthias Pfeifer \email{matthias.pfeifer@@roche.com}
+xmlWriteData_params <- function(elemname = "params", data, name = NULL, printXML = TRUE, wrap = TRUE) {
+
+  # Check input -----------------------------------------------------------------------------------
+
+  data.class <- class(data)
+
+  stopifnot(class(data) %in% c("list"))
+
+  xml <- paste0("<",elemname,
+      if(!is.null(name)){
+        if(name != ""){
+          paste0(" name=\"",name,"\"")
+        }
+      }
+      ,">")
+  if (!wrap) {
+    xml <- ""
+  }
+
+  for(i in 1:length(data)){
+    listelement <- data[[i]]
+    listelementname <- names(data)[i]
+
+    if(length(listelement)>1 || class(listelement)=="list"){
+      if(class(listelement)=="list"){
+        xml <- paste0(xml,"\n",
+            xmlWriteData_list(
+                elemname = listelementname,
+                data = listelement,
+                name = listelementname,
+                printXML = F
+                ))
+      }else if(class(listelement)=="data.frame"){
+        xml <- paste0(xml,"\n",
+            paste(xmlWriteData_data.frame(
+                elemname = listelementname,
+                name=listelementname,
+                data = listelement,
+                printXML = F
+            ),collapse="\n"))
+      }else if(class(listelement)=="matrix"){
+        xml <- paste0(xml,"\n",
+            paste(xmlWriteData_matrix(
+                    elemname = listelementname,
+                name=listelementname,
+                data = listelement,
+                printXML = F
+            ),collapse="\n"))
+      }else{
+        xml <- paste0(xml,"\n",
+            paste(xmlWriteData_vector(
+                    elemname = listelementname,
+                name=listelementname,
+                data = listelement,
+                printXML = F
+            ),collapse = "\n"))
+      }
+    }else{
+      xml <- paste0(xml,"\n",xmlWriteData_variable(
+              elemname = listelementname,
+              name=listelementname,
+              data = listelement,
+              printXML = F
+          ))
+    }
+
+
+  }#for
+
+  if (wrap) {
+    xml <- paste0(xml,paste0("\n</",elemname," >"))
+  }
+
+  if(printXML)
+    cat(paste(xml, collapse="\n"), "\n")
+  else
+    return(xml)
+}
 
 
 

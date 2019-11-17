@@ -24,6 +24,7 @@ export(
   "xmlWriteData_data.frame"                   ,
   "xmlWriteData_vector"                       ,
   "xmlWriteData_variable"                     ,
+  "xmlWriteData_params"                       ,
   "xmlWriteTest_data.frame_cellbycell"        ,
   "xmlWriteTest_vector_elementbyelement"      ,
   "xmlWriteTest_list_nodebynode"              ,
