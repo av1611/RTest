@@ -24,6 +24,7 @@ export(
   "xmlWriteData_data.frame"                   ,
   "xmlWriteData_vector"                       ,
   "xmlWriteData_variable"                     ,
+  "xmlWriteData_params"                       ,
   "xmlWriteTest_data.frame_cellbycell"        ,
   "xmlWriteTest_vector_elementbyelement"      ,
   "xmlWriteTest_list_nodebynode"              ,
@@ -57,8 +58,10 @@ export(
   "example_variable"              ,
 
   "expect_silent_RTest"              ,
+  "expect_testthat"                  ,
 
-  "RTest.execute"
+  "RTest.execute",
+  "RTest.getRTM"
 )
 
 
@@ -85,7 +88,7 @@ importFrom("utils", "capture.output", "ls.str", "sessionInfo", "str",
 )
 importFrom("magick", "image_compare","image_read","image_write")
 importFrom("glue", "glue","glue_collapse")
-importFrom("rlang", "enquo", "quo_label", "eval_bare")
+importFrom("rlang", "enquo", "quo_label", "eval_bare", "warn")
 importFrom("utils", "packageVersion", "assignInNamespace")
 
 
