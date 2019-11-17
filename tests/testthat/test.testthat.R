@@ -224,7 +224,7 @@ test_that("expect overwrite works", {
           test.start      = format(Sys.time(), "%Y-%m-%d %H:%M:%S"))
 
       testCollection <- importTCsFromDir(testCollection,
-          xml.dPath = paste0(find.package("RTest"),"/inst/xml-templates"),
+          xml.dPath = paste0(find.package("RTest"),"/xml-templates"),
           f.pattern="RTest_TC-generic.xml")
 
       outf <- tempfile(fileext=".html")
@@ -259,7 +259,7 @@ test_that("expect overwrite works", {
           test.start      = format(Sys.time(), "%Y-%m-%d %H:%M:%S"))
 
       testCollection <- importTCsFromDir(testCollection,
-          xml.dPath = paste0(find.package("RTest"),"/inst/xml-templates"),
+          xml.dPath = paste0(find.package("RTest"),"/xml-templates"),
           f.pattern="RTest_TC-generic.xml")
 
       outf <- tempfile(fileext=".html")
