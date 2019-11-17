@@ -58,6 +58,7 @@ export(
   "example_variable"              ,
 
   "expect_silent_RTest"              ,
+  "expect_testthat"                  ,
 
   "RTest.execute",
   "RTest.getRTM"

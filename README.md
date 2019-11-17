@@ -56,7 +56,7 @@ There are two ways to start with RTest
 To derive more comprehensive reports from `testthat>2.0` you would have to overwrite the `testthat` function `as.expectation.logical` by:
 
 ```
-assignInNamespace("as.expectation.logical", RTest::as.expectation.logical, ns="testthat", pos="package:testthat")
+assignInNamespace("expect", RTest::expect_testthat, ns="testthat", pos="package:testthat")
 ```
 
 To avoid this unsafe call we created an issue at testthat: https://github.com/r-lib/testthat/issues/836
