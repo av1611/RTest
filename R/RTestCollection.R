@@ -941,7 +941,9 @@ setMethod("getRTMInMatrixShape",
 
       rownames(res) <- res[,1]
 
-
+      res <- res[
+          order(rownames(res))
+          , c(1, order(colnames(res)[-1]) + 1)]
       # Return output  ------------------------------------------------------------------------------
 
       return(res)
