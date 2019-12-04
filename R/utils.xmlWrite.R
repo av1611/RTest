@@ -561,8 +561,7 @@ xmlWriteData_matrix <- function(elemname = "data", data, name = NULL, printXML =
 
   # Check input -----------------------------------------------------------------------------------
 
-  stopifnot(class(data) == "matrix")
-
+  stopifnot("matrix" %in% class(data))
 
   # Generate XML ----------------------------------------------------------------------------------
 
