@@ -65,7 +65,7 @@ matrix:
           branch: master
   - r: devel
     script:
-      - R_CLASS_MATRIX_ARRAY = true; export R_CLASS_MATRIX_ARRAY
+      - "_R_CLASS_MATRIX_ARRAY_" = true; export _R_CLASS_MATRIX_ARRAY_
       - R CMD build . --compact-vignettes=gs+qpdf
       - xvfb-run R CMD check *tar.gz --as-cran
   - r: release

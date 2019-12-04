@@ -561,7 +561,7 @@ xmlWriteData_matrix <- function(elemname = "data", data, name = NULL, printXML =
 
   # Check input -----------------------------------------------------------------------------------
 
-  stopifnot("matrix" %in% class(data))
+  stopifnot(is.matrix(data))
 
   # Generate XML ----------------------------------------------------------------------------------
 
@@ -744,21 +744,21 @@ xmlWriteData_list <- function(elemname = "list", data, name = NULL, printXML = T
     listelementname <- names(data)[i]
 
     if(length(listelement)>1 || class(listelement)=="list"){
-      if(class(listelement)=="list"){
+      if(is.list(listelement) && !is.data.frame(listelement)){
         xml <- paste0(xml,"\n",
             xmlWriteData_list(
                 data = listelement,
                 name = listelementname,
                 printXML = F
                 ))
-      }else if(class(listelement)=="data.frame"){
+      }else if(is.data.frame(listelement)){
         xml <- paste0(xml,"\n",
             paste(xmlWriteData_data.frame(
                 name=listelementname,
                 data = listelement,
                 printXML = F
             ),collapse="\n"))
-      }else if("matrix" %in% class(listelement)){
+      }else if(is.matrix(listelement)){
         xml <- paste0(xml,"\n",
             paste(xmlWriteData_matrix(
                 name=listelementname,
