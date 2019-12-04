@@ -2,7 +2,7 @@
 
 language: R
 env:
-  - PKG_TARBALL=RTest_1.2.5.tar.gz
+  - PKG_TARBALL=RTest_1.2.6.tar.gz
 sudo: required
 
 cache:
