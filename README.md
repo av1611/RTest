@@ -118,11 +118,13 @@ If you now run the following code inside your clone of this repo:
 RTest.execute("./xml-templates", f.pattern="RTest_TC-generic.xml")
 ```
 
+
 an easy to read report will be generated. The full Test report can be found here: https://zappingseb.github.io/RTest/articles/RTest_TC-generic_result.html
 
 But the major point is the variable report output which looks like this:
 
 ![Variable test report example](vignettes/example_variable.jpg)
+
 
 And that's the whole principle of RTest. You can generate human-readible tests and get human-readible reports by
 
