@@ -176,6 +176,9 @@ xmlReadData_vector <- function(xmlItem) {
       "factor" = as.factor(vector))
   )
 
+  if (is.factor(vector)) {
+    levels(vector)[which(levels(vector) == "NA")] <- NA
+  }
 
   # Set vector names ------------------------------------------------------------------------------
 
