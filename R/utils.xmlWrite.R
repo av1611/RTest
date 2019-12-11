@@ -907,7 +907,7 @@ xmlWriteTest_execution <- function(elemname = "execution", desc = NULL,
 
   # Check input -----------------------------------------------------------------------------------
 
-  stopifnot(executionType %in% c("silent", "warning", "error","message"))
+  stopifnot(executionType %in% c("silent", "warning", "error","message", "output"))
 
 
   # Generate XML ----------------------------------------------------------------------------------
